@@ -17,13 +17,13 @@ using namespace std;
 
 //Definitions of structures vector2D and Planet
 
-struct vector2D
+struct vector2D //If you are from planet Python this is the equivalent of a class
 {
   double x;
   double y;
 };
 
-struct Planet
+struct Planet //If you are from planet Python this is the equivalent of a class
 {
   double mass;
   vector2D force;
@@ -33,12 +33,13 @@ struct Planet
 
 //Definitions of arithmetic operations on vector2D objects and other useful functions
 
-double magnitude(vector2D &a)
+double magnitude(vector2D &a) //Takes a vectord2D object and returns its magnitude as a double
 {
   return (sqrt(pow(a.x,2)+pow(a.y,2)));
 }
 
-vector2D operator+(vector2D const &a, vector2D const &b)
+vector2D operator+(vector2D const &a, vector2D const &b) //The vector2D in the signature here specifies what type is the return
+//A variable that stores the address of another variable is a pointer. By preceding a pointer with a * we fetch the actual value.
 {
   vector2D final;
   final.x = a.x + b.x;
@@ -46,7 +47,7 @@ vector2D operator+(vector2D const &a, vector2D const &b)
   return final;
 }
 
-vector2D operator-(vector2D const &a, vector2D const &b)
+vector2D operator-(vector2D const &a, vector2D const &b) //The & symbol means we pass in the address of the variable in memory and not the value
 {
   vector2D final;
   final.x = a.x - b.x;
@@ -54,7 +55,7 @@ vector2D operator-(vector2D const &a, vector2D const &b)
   return final;
 }
 
-vector2D operator*(vector2D const &a, double const &b)
+vector2D operator*(vector2D const &a, double const &b) //Multiplication of a vector with a scalar b
 {
   vector2D final;
   final.x = a.x * b;
@@ -64,11 +65,11 @@ vector2D operator*(vector2D const &a, double const &b)
 
 //Using a for loop the program will iterate all planets in the solarSystem printing out their position
 
-void showState(Planet* arr, int numberOfPlanets)
+void showState(Planet* arr, int numberOfPlanets) //We give this function a pointer to an array of Planet objects, the numberOfPlanets is just the length of the array
 {
 	for(int j=0;j<numberOfPlanets;j++)
 	{
-		cout << arr[j].position.x << "\t" << arr[j].position.y << "\t";
+		cout << arr[j].position.x << "\t" << arr[j].position.y << "\t"; //Print x,y position
 	}
 
 	cout << endl;
@@ -76,13 +77,13 @@ void showState(Planet* arr, int numberOfPlanets)
 
 //The function calculates the force of planet b on planet a 
 
-vector2D gForce(Planet a, Planet b)
+vector2D gForce(Planet a, Planet b) //Takes 2 planet objects
 {
 	//The constant A can be changed to simulate electrodynamics
 
 	double A = G*a.mass*b.mass;
-	vector2D r = (b.position - a.position);
-	vector2D gravityForce;
+	vector2D r = (b.position - a.position); //Define the vector r1 - r2
+	vector2D gravityForce; //Vector to represent the x and y components of the force
 
 	//To find magnitude of force
 		
